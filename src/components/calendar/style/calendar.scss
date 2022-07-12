@@ -1,0 +1,73 @@
+$blue: #2c98f0;
+$textColor: #000000df;
+
+.calendar {
+	width: 320px;
+	font-family: Arial, Helvetica, sans-serif;
+	border-radius: 2px;
+	box-shadow: 0px 24px 38px rgba(0, 0, 0, 0.14),
+		0px 9px 46px rgba(0, 0, 0, 0.12), 0px 11px 15px rgba(0, 0, 0, 0.2);
+
+	%defaultWidthPadding {
+		width: calc(100% - 48px);
+		padding: 14px 24px;
+	}
+
+	> .title {
+		background-color: $blue;
+		color: white;
+		border-radius: 2px 2px 0 0;
+		.year {
+			margin-bottom: 7px;
+		}
+		@extend %defaultWidthPadding;
+	}
+	> .bottom {
+		background-color: #fff;
+		border-radius: 0 0 2px 2px;
+		color: $textColor;
+
+		.setMonth {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			%defaultImage {
+				width: 24px;
+				height: 24px;
+				background-size: contain;
+				background-position: center;
+				background-repeat: no-repeat;
+				border: none;
+				background-color: #00000000;
+
+				display: inline-block;
+			}
+			.arrLeft {
+				background-image: url(../../../img/arrLeft.svg);
+				@extend %defaultImage;
+			}
+			.month {
+				height: 24px;
+				display: inline-flex;
+				align-items: center;
+			}
+			.arrRight {
+				background-image: url(../../../img/arrRight.svg);
+				@extend %defaultImage;
+			}
+		}
+		.dayOfWeek {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			p {
+				text-transform: uppercase;
+				color: rgba(0, 0, 0, 0.543337);
+			}
+		}
+		@extend %defaultWidthPadding;
+		padding: 22px 24px;
+	}
+}
