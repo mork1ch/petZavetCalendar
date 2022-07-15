@@ -1,10 +1,8 @@
-import moment from "moment";
 import React from "react";
 import "./style/calendar.scss";
 
 export default function Calendar() {
 	let date = new Date();
-	// console.log(date);
 
 	var months = [
 			"Январь",
@@ -44,18 +42,36 @@ export default function Calendar() {
 			"Суббота",
 		];
 
-	var testDate = moment("MMMM");
-	console.log("test", testDate);
+	var dateObj = {
+		yearNow: date.getFullYear(),
+		month: date.getMonth(),
+		dayNowNumber: date.getDate(),
+	};
 
 	// Дата сегодня
-	const yearNow = date.getFullYear(),
-		monthNow = shortMonths[date.getMonth()],
-		monthNowFull = months[date.getMonth()],
-		dayNowNumber = date.getDate(),
-		dayNowText = days[date.getDay()];
+	// const yearNow = date.getFullYear(),
+	// 	monthNow = shortMonths[date.getMonth()],
+	// 	monthNowFull = months[date.getMonth()],
+	// 	dayNowNumber = date.getDate(),
+	// 	dayNowText = days[date.getDay()];
 
-	var daysOnMonth = new Date(yearNow, date.getMonth(), 0).getDate();
-	console.log(daysOnMonth);
+	const yearNow = dateObj.yearNow,
+		monthNow = shortMonths[dateObj.month],
+		monthNowFull = months[dateObj.month],
+		dayNowNumber = dateObj.dayNowNumber,
+		dayNowText = days[dateObj.dayNowNumber];
+
+	let daysOnMonth = new Date(yearNow, date.getMonth(), 0).getDate(); // Дней в месяце
+	var DaysOnMonth = []; // все дни в числах от 1 до окончания месяца
+	for (let i = 0; daysOnMonth > i; i++) {
+		DaysOnMonth.push(i + 1);
+	}
+
+	function monthNext() {
+		// date.monthNow = ;
+		// date.monthNowFull = ;
+	}
+	function monthPrev() {}
 
 	return (
 		<div className="calendar">
@@ -82,7 +98,11 @@ export default function Calendar() {
 					<p>с</p>
 					<p>в</p>
 				</div>
-				<div className="days"></div>
+				<div className="days">
+					{DaysOnMonth.map((item) => (
+						<p>{item}</p>
+					))}
+				</div>
 			</div>
 		</div>
 	);
