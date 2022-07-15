@@ -43,15 +43,22 @@ $textColor: #000000df;
 
 				display: inline-block;
 			}
+
+			button {
+				cursor: pointer;
+			}
+
 			.arrLeft {
 				background-image: url(../../../img/arrLeft.svg);
 				@extend %defaultImage;
 			}
+
 			.month {
 				height: 24px;
 				display: inline-flex;
 				align-items: center;
 			}
+
 			.arrRight {
 				background-image: url(../../../img/arrRight.svg);
 				@extend %defaultImage;

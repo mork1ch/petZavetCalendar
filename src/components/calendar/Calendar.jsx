@@ -1,7 +1,9 @@
 import React from "react";
+// import { useDispatch, useSelector } from "react-redux";
 import "./style/calendar.scss";
 
 export default function Calendar() {
+	// const dispatch = useDispatch();
 	let date = new Date();
 
 	var months = [
@@ -68,10 +70,11 @@ export default function Calendar() {
 	}
 
 	function monthNext() {
-		// date.monthNow = ;
-		// date.monthNowFull = ;
+		dateObj.month += 1;
 	}
-	function monthPrev() {}
+	function monthPrev() {
+		dateObj.month -= 1;
+	}
 
 	return (
 		<div className="calendar">
@@ -83,11 +86,17 @@ export default function Calendar() {
 			</div>
 			<div className="bottom">
 				<div className="setMonth">
-					<button className="arrLeft"></button>
+					<button
+						className="arrLeft"
+						onClick={() => monthPrev()}
+					></button>
 					<p className="month">
 						{monthNowFull} {yearNow}
 					</p>
-					<button className="arrRight"></button>
+					<button
+						className="arrRight"
+						onClick={() => monthNext()}
+					></button>
 				</div>
 				<div className="dayOfWeek">
 					<p>п</p>
