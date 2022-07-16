@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { monthSetNext, monthSetPrev } from "../../store/dateReducer";
@@ -108,6 +109,7 @@ export default function Calendar() {
 						</p>
 					))}
 				</div>
+				<div className="days"></div>
 			</div>
 		</div>
 	);
