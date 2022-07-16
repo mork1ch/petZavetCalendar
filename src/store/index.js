@@ -1,5 +1,5 @@
 import { combineReducers, legacy_createStore as createStore } from "redux";
-import { dateReducer } from "./date";
+import { dateReducer } from "./dateReducer";
 import { datesOfPillsReducer } from "./datesOfPillsReducer";
 
 const rootReducer = combineReducers({

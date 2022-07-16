@@ -1,10 +1,12 @@
 import React from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { monthSetNext, monthSetPrev } from "../../store/dateReducer";
 import "./style/calendar.scss";
 
 export default function Calendar() {
-	// const dispatch = useDispatch();
-	let date = new Date();
+	const dispatch = useDispatch();
+
+	const date = useSelector((state) => state.date);
 
 	var months = [
 			"Январь",
@@ -44,36 +46,28 @@ export default function Calendar() {
 			"Суббота",
 		];
 
-	var dateObj = {
-		yearNow: date.getFullYear(),
-		month: date.getMonth(),
-		dayNowNumber: date.getDate(),
-	};
-
 	// Дата сегодня
-	// const yearNow = date.getFullYear(),
-	// 	monthNow = shortMonths[date.getMonth()],
-	// 	monthNowFull = months[date.getMonth()],
-	// 	dayNowNumber = date.getDate(),
-	// 	dayNowText = days[date.getDay()];
+	const yearNow = date.yearNow,
+		monthNow = shortMonths[date.month],
+		monthNowFull = months[date.month],
+		dayNowNumber = date.day,
+		dayNowText = days[date.weekDay];
 
-	const yearNow = dateObj.yearNow,
-		monthNow = shortMonths[dateObj.month],
-		monthNowFull = months[dateObj.month],
-		dayNowNumber = dateObj.dayNowNumber,
-		dayNowText = days[dateObj.dayNowNumber];
-
-	let daysOnMonth = new Date(yearNow, date.getMonth(), 0).getDate(); // Дней в месяце
+	var daysOnMonth = new Date(date.year, date.month + 1, 0).getDate(); // Дней в месяце
+	var weekDayFirst = new Date(date.year, date.month + 1, 0).getDay(); // День недели первого дня
 	var DaysOnMonth = []; // все дни в числах от 1 до окончания месяца
-	for (let i = 0; daysOnMonth > i; i++) {
+	DaysOnMonth[weekDayFirst] = 1;
+	for (let i = 1; daysOnMonth > i; i++) {
 		DaysOnMonth.push(i + 1);
 	}
 
+	console.log(date);
+
 	function monthNext() {
-		dateObj.month += 1;
+		dispatch(monthSetNext());
 	}
 	function monthPrev() {
-		dateObj.month -= 1;
+		dispatch(monthSetPrev());
 	}
 
 	return (
@@ -109,7 +103,9 @@ export default function Calendar() {
 				</div>
 				<div className="days">
 					{DaysOnMonth.map((item) => (
-						<p>{item}</p>
+						<p key={"day" + item} className={"day" + item}>
+							{item}
+						</p>
 					))}
 				</div>
 			</div>

@@ -9,8 +9,6 @@ function App() {
 		(state) => state.datesOfPills.datesOfPills
 	);
 
-	// console.log(datesOfPills);
-
 	const AddNewDatePills = () => {
 		let date = new Date();
 
