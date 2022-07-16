@@ -43,9 +43,6 @@ export default function Calendar() {
 			"Суббота",
 		];
 
-	var testDate = moment("MMMM");
-	console.log("test", testDate);
-
 	// Дата сегодня
 	const yearNow = date.getFullYear(),
 		monthNow = shortMonths[date.getMonth()],
