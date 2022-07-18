@@ -61,8 +61,6 @@ export default function Calendar() {
 		DaysOnMonth.push(i + 1);
 	}
 
-	console.log(date);
-
 	function monthNext() {
 		dispatch(monthSetNext());
 	}
